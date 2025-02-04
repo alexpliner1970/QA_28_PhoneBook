@@ -1,12 +1,12 @@
 package tests;
 
-import manager.ApplicetoinManager;
+import manager.ApplicationManager;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 public class TestBase {
 
-   static ApplicetoinManager app = new ApplicetoinManager();
+   static ApplicationManager app = new ApplicationManager();
 
    @BeforeSuite
    public void setUp(){

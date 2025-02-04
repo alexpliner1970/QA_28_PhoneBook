@@ -3,7 +3,7 @@ package manager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ApplicetoinManager {
+public class ApplicationManager {
     WebDriver wd;
 
     public void init(){
