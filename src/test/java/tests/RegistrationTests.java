@@ -44,6 +44,7 @@ public class RegistrationTests extends TestBase{
         app.getHelperUser().submitRegistration();
 
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password format"));
+        Assert.assertTrue(app.getHelperUser().error400());
     }
     @Test
     public void registrationEmptyEmail() {
@@ -56,6 +57,7 @@ public class RegistrationTests extends TestBase{
         app.getHelperUser().submitRegistration();
 
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password format"));
+        Assert.assertTrue(app.getHelperUser().error400());
     }
     @Test
     public void registrationWrongPassword() {
@@ -68,6 +70,7 @@ public class RegistrationTests extends TestBase{
         app.getHelperUser().submitRegistration();
 
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password format"));
+        Assert.assertTrue(app.getHelperUser().error400());
     }
 
     @Test
@@ -81,6 +84,7 @@ public class RegistrationTests extends TestBase{
         app.getHelperUser().submitRegistration();
 
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password format"));
+        Assert.assertTrue(app.getHelperUser().error400());
     }
     @Test
     public void registrationRegisteredUser() {
@@ -93,5 +97,6 @@ public class RegistrationTests extends TestBase{
         app.getHelperUser().submitRegistration();
 
         Assert.assertTrue(app.getHelperUser().isAlertPresent("User already exist"));
+        Assert.assertTrue(app.getHelperUser().error409());
     }
 }

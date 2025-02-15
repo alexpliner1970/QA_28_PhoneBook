@@ -63,4 +63,12 @@ public class HelperUser extends HelperBase {
     public void submitRegistration() {
         click(By.xpath("//button[text()='Registration']"));
     }
+
+    public boolean error400() {
+        return isElementPresent(By.xpath("//div[text()='Registration failed with code 400']"));
+    }
+
+    public boolean error409() {
+        return isElementPresent(By.xpath("//div[text()='Registration failed with code 409']"));
+    }
 }
