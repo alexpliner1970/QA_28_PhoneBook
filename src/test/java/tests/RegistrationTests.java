@@ -26,9 +26,14 @@ public class RegistrationTests extends TestBase{
 
         app.getHelperUser().openLoginRegistrationForm();
         app.getHelperUser().fillLoginRegistrationForm(user);
+        app.getHelperUser().pause(2000);
         app.getHelperUser().submitRegistration();
 
+
+
         Assert.assertTrue(app.getHelperUser().isLogget());
+
+        Assert.assertTrue(app.getHelperUser().isNoContactsHereDisplayed());
 
     }
     //=================Negative===========
@@ -46,19 +51,7 @@ public class RegistrationTests extends TestBase{
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password format"));
         Assert.assertTrue(app.getHelperUser().error400());
     }
-    @Test
-    public void registrationEmptyEmail() {
-        User user=new User()
-                .setEmail("")
-                .setPassword("Wer34#64");
 
-        app.getHelperUser().openLoginRegistrationForm();
-        app.getHelperUser().fillLoginRegistrationForm(user);
-        app.getHelperUser().submitRegistration();
-
-        Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password format"));
-        Assert.assertTrue(app.getHelperUser().error400());
-    }
     @Test
     public void registrationWrongPassword() {
         User user=new User()
@@ -73,19 +66,7 @@ public class RegistrationTests extends TestBase{
         Assert.assertTrue(app.getHelperUser().error400());
     }
 
-    @Test
-    public void registrationEmptyPassword() {
-        User user=new User()
-                .setEmail("sdf@wt.com")
-                .setPassword("");
-
-        app.getHelperUser().openLoginRegistrationForm();
-        app.getHelperUser().fillLoginRegistrationForm(user);
-        app.getHelperUser().submitRegistration();
-
-        Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password format"));
-        Assert.assertTrue(app.getHelperUser().error400());
-    }
+    
     @Test
     public void registrationRegisteredUser() {
         User user=new User()

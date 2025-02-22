@@ -61,4 +61,9 @@ public class HelperBase {
         }
     }
 
+
+    public void openContactInf(By locator) {
+        click(By.cssSelector("a[href='/contacts'"));
+        click(locator);
+    }
 }

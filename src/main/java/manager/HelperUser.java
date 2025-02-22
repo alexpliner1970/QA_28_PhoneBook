@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -71,4 +72,18 @@ public class HelperUser extends HelperBase {
     public boolean error409() {
         return isElementPresent(By.xpath("//div[text()='Registration failed with code 409']"));
     }
+
+    public boolean isNoContactsHereDisplayed() {
+        WebDriverWait wait = new WebDriverWait(wd, Duration.ofSeconds(5));
+        return wait.until(ExpectedConditions
+                .textToBePresentInElement(wd.findElement(By.cssSelector(".contact-page_message__2qafk>h1")),
+                        "No Contacts here!"));
+    }
+
+    public void login(User user) {
+        openLoginRegistrationForm();
+        fillLoginRegistrationForm(user);
+        submitLogin();
+    }
+
 }
