@@ -63,19 +63,19 @@ public class HelperContact extends HelperBase{
         }
     }
 
+
+
     public int removeContact() {
         int e, r;
         r = listContacts(By.cssSelector("h2")).size();
-        click(By.className("contact-item_card__2SOIM"));
-        click(By.xpath("//button[text()='Remove']"));
+        remove();
         pause(1500);
         e = listContacts(By.cssSelector("h2")).size();
         return r - e;
     }
     public int removeAllContacts(){
         do {
-            click(By.className("contact-item_card__2SOIM"));
-            click(By.xpath("//button[text()='Remove']"));
+            remove();
             pause(750);
         }while (!listContacts(By.cssSelector("h3")).isEmpty());
 

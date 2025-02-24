@@ -71,6 +71,10 @@ public class HelperBase {
             click(By.cssSelector("a[href='/contacts'"));
         }
     }
+    public void remove(){
+        click(By.className("contact-item_card__2SOIM"));
+        click(By.xpath("//button[text()='Remove']"));
+    }
 
     public List<WebElement> listContacts(By locator){
         return wd.findElements(locator);
