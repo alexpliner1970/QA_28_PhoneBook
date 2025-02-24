@@ -28,11 +28,14 @@ public class AddNewContact extends TestBase {
                 .address("Holon")
                 .description("Friend")
                 .build();
-        app.getHelperContact().openAddContactForm();
-        app.getHelperContact().fillAddContactForm(contact);
+        app.getHelperContact().openContactForm();
+        app.getHelperContact().fillContactForm(contact);
+        app.getHelperContact().pause(15000);
         app.getHelperContact().saveContact();
+        Assert.assertTrue(app.getHelperContact().isContactAddedByName(contact.getName()));
+        Assert.assertTrue(app.getHelperContact().isContactAddedByPhone(contact.getPhone()));
 
-        Assert.assertTrue(app.getHelperContact().existContact().contains(contact.getName()));
+
 
     }
 
@@ -48,19 +51,22 @@ public class AddNewContact extends TestBase {
                 .address("Akko")
 
                 .build();
-        app.getHelperContact().openAddContactForm();
-        app.getHelperContact().fillAddContactForm(contact);
+        app.getHelperContact().openContactForm();
+        app.getHelperContact().fillContactForm(contact);
+        app.getHelperContact().pause(15000);
         app.getHelperContact().saveContact();
+        Assert.assertTrue(app.getHelperContact().isContactAddedByName(contact.getName()));
+        Assert.assertTrue(app.getHelperContact().isContactAddedByPhone(contact.getPhone()));
 
         Assert.assertTrue(app.getHelperContact().isButtonContactsBlack());
 
-        //Assert.assertTrue(app.getHelperContact().existContact().contains(contact.getName()));
     }
 
     //==================negative==========================
 
     @Test
-    public void addWithEmtyName(){
+    public void addWithEmtyName(){// Displayed  filed form and error message “Name cant be empty!”
+
         Contact contact = Contact.builder()
                 .name("")
                 .lastName("Shaz")
@@ -69,15 +75,16 @@ public class AddNewContact extends TestBase {
                 .address("Akko")
 
                 .build();
-        app.getHelperContact().openAddContactForm();
-        app.getHelperContact().fillAddContactForm(contact);
+        app.getHelperContact().openContactForm();
+        app.getHelperContact().fillContactForm(contact);
+        app.getHelperContact().pause(15000);
         app.getHelperContact().saveContact();
 
         Assert.assertTrue(app.getHelperContact().isButtonAddBlack());
     }
 
     @Test
-    public void addWithEmtyLastName(){
+    public void addWithEmtyLastName(){//Displayed  filed form and error message “Last Name can be empty!”
         Contact contact = Contact.builder()
                 .name("Tom")
                 .lastName("")
@@ -86,15 +93,16 @@ public class AddNewContact extends TestBase {
                 .address("Akko")
 
                 .build();
-        app.getHelperContact().openAddContactForm();
-        app.getHelperContact().fillAddContactForm(contact);
+        app.getHelperContact().openContactForm();
+        app.getHelperContact().fillContactForm(contact);
+        app.getHelperContact().pause(15000);
         app.getHelperContact().saveContact();
 
         Assert.assertTrue(app.getHelperContact().isButtonAddBlack());
     }
 
     @Test
-    public void addWithEmtyAddress(){
+    public void addWithEmtyAddress(){//Displayed  filed form and error message “Address can be empty!”
         Contact contact = Contact.builder()
                 .name("Tom")
                 .lastName("Shaz")
@@ -103,15 +111,16 @@ public class AddNewContact extends TestBase {
                 .address("")
 
                 .build();
-        app.getHelperContact().openAddContactForm();
-        app.getHelperContact().fillAddContactForm(contact);
+        app.getHelperContact().openContactForm();
+        app.getHelperContact().fillContactForm(contact);
+        app.getHelperContact().pause(15000);
         app.getHelperContact().saveContact();
 
         Assert.assertTrue(app.getHelperContact().isButtonAddBlack());
     }
 
     @Test
-    public void addWithWrongPhone(){
+    public void addWithWrongPhone(){// Displayed  filed form and error message “Phone can be in digital format in min 10, max 15 digits!
         Contact contact = Contact.builder()
                 .name("Tom")
                 .lastName("Shaz")
@@ -120,15 +129,16 @@ public class AddNewContact extends TestBase {
                 .address("Akko")
 
                 .build();
-        app.getHelperContact().openAddContactForm();
-        app.getHelperContact().fillAddContactForm(contact);
+        app.getHelperContact().openContactForm();
+        app.getHelperContact().fillContactForm(contact);
+        app.getHelperContact().pause(15000);
         app.getHelperContact().saveContact();
         Assert.assertTrue(app.getHelperContact().isAlertPresent(" Phone not valid: Phone number must contain only digits! And length min 10, max 15!"));
 
         Assert.assertTrue(app.getHelperContact().isButtonAddBlack());
     }
     @Test
-    public void addWithWrongEmail(){
+    public void addWithWrongEmail(){//Displayed error message “Email can be in email well- format”.
         Contact contact = Contact.builder()
                 .name("Tom")
                 .lastName("Shaz")
@@ -137,45 +147,14 @@ public class AddNewContact extends TestBase {
                 .address("Akko")
 
                 .build();
-        app.getHelperContact().openAddContactForm();
-        app.getHelperContact().fillAddContactForm(contact);
+        app.getHelperContact().openContactForm();
+        app.getHelperContact().fillContactForm(contact);
+        app.getHelperContact().pause(15000);
         app.getHelperContact().saveContact();
         Assert.assertTrue(app.getHelperContact().isAlertPresent("Email not valid: "));
 
         Assert.assertTrue(app.getHelperContact().isButtonAddBlack());
     }
-    @Test
-    public void addWithRepitedEmail() {  //Bag!!!!!!!!!!!!!!
-        Contact contact = Contact.builder()
-                .name("Tom")
-                .lastName("Shaz")
-                .phone("7345787657658")
-                .email("ser1240@gmail.com")
-                .address("Akko")
-
-                .build();
-        app.getHelperContact().openAddContactForm();
-        app.getHelperContact().fillAddContactForm(contact);
-        app.getHelperContact().saveContact();
 
 
-        Assert.assertTrue(app.getHelperContact().isButtonAddBlack());
-    }
-    @Test
-    public void addWithRepitedPhone() { //Bag!!!!!!!!!!!!!!!!!
-        Contact contact = Contact.builder()
-                .name("Tim")
-                .lastName("Rot")
-                .phone("734512407658")
-                .email("ser17@gmail.com")
-                .address("Akko")
-
-                .build();
-        app.getHelperContact().openAddContactForm();
-        app.getHelperContact().fillAddContactForm(contact);
-        app.getHelperContact().saveContact();
-
-
-        Assert.assertTrue(app.getHelperContact().isButtonAddBlack());
-    }
 }

@@ -1,10 +1,7 @@
 package manager;
 
 import org.checkerframework.framework.qual.DefaultQualifier;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,9 +21,17 @@ public class HelperBase {
         WebElement element= wd.findElement(locator);
         element.click();
         element.clear();
+        clearNew(element);
         if (text!=null) {
             element.sendKeys(text);
         }
+
+    }
+
+
+    public void clearNew(WebElement element){
+        element.sendKeys(" ");
+        element.sendKeys(Keys.BACK_SPACE);
     }
     public void click(By locator){
         WebElement element= wd.findElement(locator);
@@ -61,9 +66,14 @@ public class HelperBase {
         }
     }
 
+    public void openContacts() {
+        if (isElementPresent(By.cssSelector("a[href='/contacts'"))) {
+            click(By.cssSelector("a[href='/contacts'"));
+        }
+    }
 
-    public void openContactInf(By locator) {
-        click(By.cssSelector("a[href='/contacts'"));
-        click(locator);
+    public List<WebElement> listContacts(By locator){
+        return wd.findElements(locator);
+
     }
 }
