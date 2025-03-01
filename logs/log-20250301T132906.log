@@ -1,0 +1,24 @@
+13:29:08.820 INFO  manager.ApplicationManager - All tests rus in Chrom
+13:29:09.395 INFO  manager.ApplicationManager - The link --->https://telranedu.web.app/home
+13:29:15.142 INFO  tests.TestBase - Before method finished login
+13:29:15.164 INFO  tests.TestBase - Name of method--->addNewContactSuccess_1
+13:29:18.156 INFO  tests.TestBase - Test data --> Contact(name=Igor, lastName=Break, phone=734518557658, email=ser1855@gmail.com, address=Holon, description=Friend)
+13:29:18.967 INFO  tests.TestBase - Contact name: 'Igor' and phoneNumber: '734518557658' added
+13:29:18.977 INFO  tests.TestBase - Name of method--->addNewContactSuccess_2
+13:29:35.226 INFO  tests.TestBase - Test data --> Contact(name=Misha, lastName=Shaz, phone=734518357658, email=ser1835@gmail.com, address=Akko, description=null)
+13:29:36.319 INFO  tests.TestBase - Contact name: 'Misha' and phoneNumber: '734518357658' added
+13:29:36.319 INFO  tests.TestBase - Name of method--->addWithEmtyAddress
+13:29:53.263 INFO  tests.TestBase - Test data --> Contact(name=Tom, lastName=Shaz, phone=7345787657658, email=serft@gmail.com, address=, description=null)
+13:29:53.421 INFO  tests.TestBase - Assert check is element button 'Add' black
+13:29:53.424 INFO  tests.TestBase - Name of method--->addWithEmtyLastName
+13:30:09.828 INFO  tests.TestBase - Test data --> Contact(name=Tom, lastName=, phone=7345787657658, email=serft@gmail.com, address=Akko, description=null)
+13:30:09.973 INFO  tests.TestBase - Assert check is element button 'Add' black
+13:30:09.981 INFO  tests.TestBase - Name of method--->addWithEmtyName
+13:30:11.289 INFO  tests.TestBase - Test data --> Contact(name=, lastName=Shaz, phone=7345787657658, email=serft@gmail.com, address=Akko, description=null)
+13:30:26.451 INFO  tests.TestBase - Assert check is element button 'Add' black
+13:30:26.451 INFO  tests.TestBase - Name of method--->addWithWrongEmail
+13:30:43.257 INFO  tests.TestBase - Test data --> Contact(name=Tom, lastName=Shaz, phone=7345787657658, email=serftgmail.com, address=Akko, description=null)
+13:30:48.934 INFO  tests.TestBase - Assert check is alert present with error text 'Email not valid:'
+13:30:48.967 INFO  tests.TestBase - Name of method--->addWithWrongPhone
+13:31:05.304 INFO  tests.TestBase - Test data --> Contact(name=Tom, lastName=Shaz, phone=734, email=serft@gmail.com, address=Akko, description=null)
+13:31:11.468 INFO  tests.TestBase - Assert check is alert present with error text 'Phone not valid: Phone number must contain only digits! And length min 10, max 15!'

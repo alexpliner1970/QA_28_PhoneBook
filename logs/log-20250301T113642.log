@@ -1,0 +1,18 @@
+11:36:44.048 INFO  manager.ApplicationManager - All tests rus in Chrom
+11:36:44.577 INFO  manager.ApplicationManager - The link --->https://telranedu.web.app/home
+11:36:44.600 INFO  tests.TestBase - Name of method--->registrationRegisteredUser
+11:36:49.632 INFO  tests.TestBase - Before method finished logout
+11:36:49.632 INFO  tests.TestBase - Test data --> email: 'sdf@wweb' & password: 'Wer34#64'
+11:36:56.729 INFO  tests.TestBase - Assert check is alert present with error text 'User already exist'
+11:36:56.736 INFO  tests.TestBase - Name of method--->registrationSuccess
+11:37:01.775 INFO  tests.TestBase - Before method finished logout
+11:37:04.312 INFO  tests.TestBase - Test data --> email:'ser1154@gmail.com' & password: 'Wer34#64'
+11:37:05.688 INFO  tests.TestBase - Assert check is text 'No Contacts here!'
+11:37:05.688 INFO  tests.TestBase - Name of method--->registrationWrongEmail
+11:37:05.818 INFO  tests.TestBase - Before method finished logout
+11:37:05.818 INFO  tests.TestBase - Test data --> email: 'gmail.com' & password: 'Wer34#64'
+11:37:11.935 INFO  tests.TestBase - Assert check is alert present with error text 'Wrong email or password'
+11:37:11.935 INFO  tests.TestBase - Name of method--->registrationWrongPassword
+11:37:16.984 INFO  tests.TestBase - Before method finished logout
+11:37:16.999 INFO  tests.TestBase - Test data --> email: 'sdf@wt.com' & password: 'Wer'
+11:37:23.598 INFO  tests.TestBase - Assert check is alert present with error text 'Wrong email or password'

@@ -59,6 +59,7 @@ public class HelperContact extends HelperBase{
             openContactForm();
             fillContactForm(contact);
             saveContact();
+            pause(650);
 
         }
     }
@@ -68,9 +69,11 @@ public class HelperContact extends HelperBase{
     public int removeContact() {
         int e, r;
         r = listContacts(By.cssSelector("h2")).size();
+        logger.info("Number of Contacts before remove --->" +r);
         remove();
-        pause(1500);
+
         e = listContacts(By.cssSelector("h2")).size();
+        logger.info("Number of Contacts after remove --->" +e);
         return r - e;
     }
     public int removeAllContacts(){

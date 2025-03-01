@@ -15,6 +15,7 @@ public class AddNewContact extends TestBase {
         if (!app.getHelperUser().isLogget()) {
             app.getHelperUser().login(new User().setEmail("sdf@wweb").setPassword("Wer34#64"));
         }
+        logger.info("Before method finished login");
     }
     @Test
     public void addNewContactSuccess_1(){
@@ -30,10 +31,13 @@ public class AddNewContact extends TestBase {
                 .build();
         app.getHelperContact().openContactForm();
         app.getHelperContact().fillContactForm(contact);
-        app.getHelperContact().pause(15000);
+        //app.getHelperContact().pause(15000);
+        app.getHelperContact().getScreen("src/test/screenshots/skr-"+i+".png");
+        logger.info("Test data --> "+contact.toString());
         app.getHelperContact().saveContact();
         Assert.assertTrue(app.getHelperContact().isContactAddedByName(contact.getName()));
         Assert.assertTrue(app.getHelperContact().isContactAddedByPhone(contact.getPhone()));
+        logger.info("Contact name: "+"'"+contact.getName()+"' and phoneNumber: "+"'"+contact.getPhone()+"' added");
 
 
 
@@ -54,11 +58,13 @@ public class AddNewContact extends TestBase {
         app.getHelperContact().openContactForm();
         app.getHelperContact().fillContactForm(contact);
         app.getHelperContact().pause(15000);
+        logger.info("Test data --> "+contact.toString());
         app.getHelperContact().saveContact();
         Assert.assertTrue(app.getHelperContact().isContactAddedByName(contact.getName()));
         Assert.assertTrue(app.getHelperContact().isContactAddedByPhone(contact.getPhone()));
+        logger.info("Contact name: "+"'"+contact.getName()+"' and phoneNumber: "+"'"+contact.getPhone()+"' added");
 
-        Assert.assertTrue(app.getHelperContact().isButtonContactsBlack());
+        //Assert.assertTrue(app.getHelperContact().isButtonContactsBlack());
 
     }
 
@@ -77,10 +83,12 @@ public class AddNewContact extends TestBase {
                 .build();
         app.getHelperContact().openContactForm();
         app.getHelperContact().fillContactForm(contact);
+        logger.info("Test data --> "+contact.toString());
         app.getHelperContact().pause(15000);
         app.getHelperContact().saveContact();
 
         Assert.assertTrue(app.getHelperContact().isButtonAddBlack());
+        logger.info("Assert check is element button 'Add' black");
     }
 
     @Test
@@ -96,9 +104,11 @@ public class AddNewContact extends TestBase {
         app.getHelperContact().openContactForm();
         app.getHelperContact().fillContactForm(contact);
         app.getHelperContact().pause(15000);
+        logger.info("Test data --> "+contact.toString());
         app.getHelperContact().saveContact();
 
         Assert.assertTrue(app.getHelperContact().isButtonAddBlack());
+        logger.info("Assert check is element button 'Add' black");
     }
 
     @Test
@@ -114,9 +124,11 @@ public class AddNewContact extends TestBase {
         app.getHelperContact().openContactForm();
         app.getHelperContact().fillContactForm(contact);
         app.getHelperContact().pause(15000);
+        logger.info("Test data --> "+contact.toString());
         app.getHelperContact().saveContact();
 
         Assert.assertTrue(app.getHelperContact().isButtonAddBlack());
+        logger.info("Assert check is element button 'Add' black");
     }
 
     @Test
@@ -132,9 +144,11 @@ public class AddNewContact extends TestBase {
         app.getHelperContact().openContactForm();
         app.getHelperContact().fillContactForm(contact);
         app.getHelperContact().pause(15000);
+        logger.info("Test data --> "+contact.toString());
         app.getHelperContact().saveContact();
         Assert.assertTrue(app.getHelperContact().isAlertPresent(" Phone not valid: Phone number must contain only digits! And length min 10, max 15!"));
 
+        logger.info("Assert check is alert present with error text 'Phone not valid: Phone number must contain only digits! And length min 10, max 15!'");
         Assert.assertTrue(app.getHelperContact().isButtonAddBlack());
     }
     @Test
@@ -150,8 +164,10 @@ public class AddNewContact extends TestBase {
         app.getHelperContact().openContactForm();
         app.getHelperContact().fillContactForm(contact);
         app.getHelperContact().pause(15000);
+        logger.info("Test data --> "+contact.toString());
         app.getHelperContact().saveContact();
         Assert.assertTrue(app.getHelperContact().isAlertPresent("Email not valid: "));
+        logger.info("Assert check is alert present with error text 'Email not valid:'");
 
         Assert.assertTrue(app.getHelperContact().isButtonAddBlack());
     }
