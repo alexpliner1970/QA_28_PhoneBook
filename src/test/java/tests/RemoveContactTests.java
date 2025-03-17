@@ -1,44 +1,34 @@
 package tests;
 
-import models.Contact;
 import models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Random;
-
 public class RemoveContactTests extends TestBase{
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preCondition() {
-
-        int i = new Random().nextInt(1000) + 1000;
-
-        Contact contact = Contact.builder()
-                .name("Misha")
-                .lastName("Shaz")
-                .phone("7345" + i + "7658")
-                .email("ser" + i + "@gmail.com")
-                .address("Akko")
-                .build();
-        if (!app.getHelperUser().isLogget()) {
-            app.getHelperUser().login(new User().setEmail("sdf@wweb").setPassword("Wer34#64"));
+        if (!app.getHelperUser().isLogged()) {
+            app.getHelperUser().login(new User().withEmail("margo@gmail.com").withPassword("Mmar123456$"));
         }
-        app.getHelperContact().openContacts();
-        app.getHelperContact().provideContacts(contact);
-    }
-    @Test
-    public void removeFirstContact(){
-        Assert.assertEquals(app.getHelperContact().removeContact(),1);
+        app.getHelperContact().provideContacts();//if list of contacts <3 ==> add 3 contacts
+
 
     }
+
+    @Test(groups = {"smoke"})
+    public void removeFirstContact(){
+        //Assert size contactList less by one
+        Assert.assertEquals(app.getHelperContact().removeOneContact(), 1);
+
+    }
+
     @Test
     public void removeAllContacts(){
         app.getHelperContact().removeAllContacts();
         Assert.assertTrue(app.getHelperContact().isNoContactsHereDisplayed());
-        logger.info("Assert check is text 'No Contacts here!'");
-
+        //"No contacts here
 
     }
 }
